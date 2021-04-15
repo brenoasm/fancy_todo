@@ -1,0 +1,9 @@
+linter:
+  rules:
+    - always_declare_return_types
+    - always_put_control_body_on_new_line
+    - always_put_required_named_parameters_first
+    - avoid_empty_else
+    - camel_case_types
+    - unnecessary_this
+    - prefer_final_locals
