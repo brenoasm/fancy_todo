@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+    postgres:
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            - POSTGRES_DB=fancy_todo
+            - POSTGRES_USER=admin
+            - POSTGRES_PASSWORD=admin
+        volumes:
+            - /var/opt/docker_volumes/postgresql:/var/lib/postgresql/data
+        networks:
+            - postgresql_network
+
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            PGADMIN_DEFAULT_EMAIL: "breno.augustosm@gmail.com"
+            PGADMIN_DEFAULT_PASSWORD: "admin"
+        ports:
+            - "16543:80"
+        depends_on:
+            - postgres
+        networks:
+            - postgresql_network
+
+networks: 
+    postgresql_network:
+        driver: bridge
